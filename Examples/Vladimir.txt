@@ -1,0 +1,202 @@
+# This file contains common pin mappings for the BIGTREETECH SKR V1.3
+# board. To use this config, the firmware should be compiled for the
+# LPC1768.
+ 
+# See the example.cfg file for a description of available parameters.
+ 
+[input_shaper]
+shaper_freq_x: 34.27
+shaper_freq_y: 30.65
+shaper_type: mzv
+
+[stepper_x]
+step_pin: P2.2
+dir_pin: P2.6
+enable_pin: !P2.1
+step_distance: .0125
+endstop_pin: P1.29  
+position_endstop: 0
+position_max: 200
+homing_speed: 50
+second_homing_speed: 10
+ 
+[stepper_y]
+step_pin: P0.19
+dir_pin: !P0.20
+enable_pin: !P2.8
+step_distance: .0125
+endstop_pin: P1.27  
+position_endstop: 0
+position_max: 200
+homing_speed: 50
+second_homing_speed: 10
+ 
+[stepper_z]
+step_pin: P0.22
+dir_pin: P2.11
+enable_pin: !P0.21
+step_distance: .000625
+endstop_pin: P1.25  
+position_endstop: 0
+position_max: 270
+
+ 
+[extruder]
+step_pin: P2.13
+dir_pin: P0.11
+enable_pin: !P2.12
+step_distance: .006729
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: P2.7
+sensor_pin: P0.24
+sensor_type: NTC 100K beta 3950
+pullup_resistor: 4700
+#control: pid
+#pid_Kp: 22.2
+#pid_Ki: 1.08
+#pid_Kd: 114
+min_temp: 0
+max_temp: 260
+pressure_advance: 0.7
+
+
+ 
+ 
+[heater_bed]
+heater_pin: P2.5
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: P0.23
+control: watermark
+min_temp: 0
+max_temp: 130
+max_delta: 0.5
+ 
+[fan]
+pin: P2.3
+ 
+[heater_fan my_nozzle_fan]
+pin: P2.4
+heater_temp: 50.0
+fan_speed: 1.0
+ 
+[mcu]
+serial: /dev/ttyACM0
+
+ 
+[printer]
+kinematics: cartesian
+max_velocity: 300
+max_accel: 3000
+max_z_velocity: 5
+max_z_accel: 100
+
+ 
+[bed_screws]
+screw1: 10,10
+screw2: 190,10
+screw3: 100,190
+horizontal_move_z: 1
+ 
+ 
+ 
+########################################
+# TMC2208 configuration
+########################################
+ 
+# For TMC2208 UART
+#   1) Remove all of the jumpers below the stepper drivers
+#   2) Place jumpers on the red pin headers labeled XUART (XUART, YUART etc.)
+ 
+[tmc2208 stepper_x]
+uart_pin: P1.17
+microsteps: 16
+run_current: 0.900
+hold_current: 0.500
+stealthchop_threshold: 250
+ 
+[tmc2208 stepper_y]
+uart_pin: P1.15
+microsteps: 16
+run_current: 0.900
+hold_current: 0.500
+stealthchop_threshold: 250
+ 
+[tmc2208 stepper_z]
+uart_pin: P1.10
+microsteps: 16
+run_current: 0.650
+hold_current: 0.450
+stealthchop_threshold: 30
+ 
+[tmc2208 extruder]
+uart_pin: P1.8
+microsteps: 16
+run_current: 0.800
+hold_current: 0.500
+stealthchop_threshold: 5
+ 
+#[tmc2208 extruder1]
+#uart_pin: P1.1
+#microsteps: 16
+#run_current: 0.800
+#hold_current: 0.500
+#stealthchop_threshold: 5
+ 
+ 
+########################################
+# EXP1 / EXP2 (display) pins
+########################################
+ 
+[board_pins]
+aliases:
+     #EXP1 header
+    EXP1_1=P1.30, EXP1_3=P1.18, EXP1_5=P1.20, EXP1_7=P1.22, EXP1_9=<GND>,
+    EXP1_2=P0.28, EXP1_4=P1.19, EXP1_6=P1.21, EXP1_8=P1.23, EXP1_10=<5V>,
+     #EXP2 header
+    EXP2_1=P0.17, EXP2_3=P3.26, EXP2_5=P3.25, EXP2_7=P1.31, EXP2_9=<GND>,
+    EXP2_2=P0.15, EXP2_4=P0.16, EXP2_6=P0.18, EXP2_8=<RST>, EXP2_10=<NC>
+    # Pins EXP2_1, EXP2_6, EXP2_2 are also MISO, MOSI, SCK of bus "ssp0"
+ 
+# See the sample-lcd.cfg file for definitions of common LCD displays.
+ 
+[display]
+lcd_type: uc1701
+cs_pin: EXP1_3
+a0_pin: EXP1_4
+rst_pin: EXP1_5
+contrast: 60
+encoder_pins: ^EXP2_5, ^EXP2_3
+click_pin: ^!EXP1_2
+## Some micro-controller boards may require an spi bus to be specified:
+#spi_bus: spi
+## Alternatively, some micro-controller boards may work with software spi:
+#spi_software_miso_pin: EXP2_1
+#spi_software_mosi_pin: EXP2_6
+#spi_software_sclk_pin: EXP2_2
+ 
+[output_pin BEEPER_pin]
+pin: EXP1_1
+value: 1
+shutdown_value: 1
+ 
+ 
+[neopixel fysetc_mini12864]
+pin: EXP1_6
+chain_count: 3
+color_order: RGB
+initial_RED: 0
+initial_GREEN: 1
+initial_BLUE: 0
+
+
+
+#*# <---------------------- SAVE_CONFIG ---------------------->
+#*# DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
+#*#
+#*# [extruder]
+#*# control = pid
+#*# pid_kp = 12.943
+#*# pid_ki = 0.466
+#*# pid_kd = 89.795
+

@@ -1,0 +1,163 @@
+[stepper_x]
+step_pin: ar54
+dir_pin: ar55
+enable_pin: !ar38
+step_distance: .0125
+endstop_pin: ^ar3
+position_endstop: 0
+position_max: 200
+homing_speed: 50
+
+[stepper_y]
+step_pin: ar60
+dir_pin: !ar61
+enable_pin: !ar56
+step_distance: .0125
+endstop_pin: ^ar14
+position_endstop: 0
+position_max: 200
+homing_speed: 50
+
+[stepper_z]
+step_pin: ar46
+dir_pin: ar48
+enable_pin: !ar62
+step_distance: .000625
+endstop_pin: ^ar18
+position_endstop: 0
+position_max: 200
+
+[extruder]
+step_pin: ar26
+dir_pin: ar28
+enable_pin: !ar24
+step_distance: .006729
+max_extrude_only_distance: 800.0
+max_extrude_cross_section: 9
+#max_extrude_only_velocity: 1000
+#max_extrude_only_accel: 30
+#pressure_advance: 0.6
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: ar10
+sensor_type: ATC Semitec 104GT-2
+pullup_resistor: 4700
+sensor_pin: analog13
+control: pid
+pid_Kp: 22.2
+pid_Ki: 1.08
+pid_Kd: 114
+min_temp: 0
+max_temp: 268
+
+[tmc2208 stepper_x]
+uart_pin: ar63
+microsteps: 16
+run_current: 0.900
+hold_current: 0.500
+stealthchop_threshold: 250
+
+[tmc2208 stepper_y]
+uart_pin: ar64
+microsteps: 16
+run_current: 0.900
+hold_current: 0.500
+stealthchop_threshold: 250
+
+[tmc2208 stepper_z]
+uart_pin: ar65
+microsteps: 16
+run_current: 0.650
+hold_current: 0.450
+stealthchop_threshold: 30
+
+[tmc2208 extruder]
+uart_pin: ar66
+microsteps: 16
+run_current: 0.800
+hold_current: 0.500
+stealthchop_threshold: 5
+
+[heater_bed]
+heater_pin: ar8
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: analog14
+control: watermark
+min_temp: 0
+max_temp: 120
+
+[bed_screws]
+screw1: 10,10
+screw2: 190,10
+screw3: 100,190
+
+[bed_mesh]
+speed: 50
+horizontal_move_z: 25
+mesh_min: 10,10
+mesh_max: 190, 190
+probe_count: 3,3
+fade_start: 1
+fade_end: 10
+fade_target: 0
+move_check_distance: 5
+split_delta_z: .025
+mesh_pps: 2,2
+algorithm: bicubic
+bicubic_tension: 0.2
+
+[fan]
+pin: ar9
+
+[heater_fan my_nozzle_fan]
+pin: ar7
+fan_speed: 1.0
+
+[mcu]
+serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+pin_map: arduino
+
+[printer]
+kinematics: cartesian
+
+max_velocity: 150
+max_accel: 1500
+max_z_velocity: 5
+max_z_accel: 30
+
+[display]
+lcd_type: uc1701
+cs_pin: EXP1_3
+a0_pin: EXP1_4
+rst_pin: EXP1_5
+contrast: 63
+encoder_pins: ^EXP2_5, ^EXP2_3
+click_pin: ^!EXP1_2
+## Some micro-controller boards may require an spi bus to be specified:
+#spi_bus: spi
+## Alternatively, some micro-controller boards may work with software spi:
+#spi_software_miso_pin: EXP2_1
+#spi_software_mosi_pin: EXP2_6
+#spi_software_sclk_pin: EXP2_2
+
+[output_pin beeper]
+pin: EXP1_1
+
+[neopixel fysetc_mini12864]
+pin: EXP1_6
+chain_count: 3
+color_order_GRB: False
+initial_RED: 0.4
+initial_GREEN: 0.4
+initial_BLUE: 0.4
+
+[board_pins]
+aliases:
+    # Common EXP1 header found on many "all-in-one" ramps clones
+    EXP1_1=ar37, EXP1_3=ar17, EXP1_5=ar23, EXP1_7=ar27, EXP1_9=<GND>,
+    EXP1_2=ar35, EXP1_4=ar16, EXP1_6=ar25, EXP1_8=ar29, EXP1_10=<5V>,
+    # EXP2 header
+    EXP2_1=ar50, EXP2_3=ar31, EXP2_5=ar33, EXP2_7=ar49, EXP2_9=<GND>,
+    EXP2_2=ar52, EXP2_4=ar53, EXP2_6=ar51, EXP2_8=ar41, EXP2_10=<RST>
+    # Pins EXP2_1, EXP2_6, EXP2_2 are also MISO, MOSI, SCK of bus "spi"
+    # Note, some boards wire: EXP2_8=<RST>, EXP2_10=ar41
