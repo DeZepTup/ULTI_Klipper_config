@@ -44,3 +44,5 @@ lrwxrwxrwx 1 root root 13 Jan 17 22:12 usb-marlinfw.org_Marlin_USB_Device_0F0170
 - Либо через SD. [Удлинитель](https://habr.com/ru/post/206394/) поможет с перепрошивками! 
 
 >sudo service klipper start
+
+# To be continued...
