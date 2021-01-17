@@ -43,6 +43,18 @@ lrwxrwxrwx 1 root root 13 Jan 17 22:12 usb-marlinfw.org_Marlin_USB_Device_0F0170
 
 - Либо через SD. [Удлинитель](https://habr.com/ru/post/206394/) поможет с перепрошивками! 
 
+>ls -lrt /dev/serial/by-id/
+lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-Klipper_lpc1768_1270010FC81848AFFABA185DC32000F5-if00 -> ../../ttyACM0
+
 >sudo service klipper start
+
+## Конфигурирование
+- Открываем printer.cfg, корректируем в нем /dev/serial/by-id/
+- Заходим на FLUIDD
+- Restart
+
+## Калибровка
+- PID_CALIBRATE HEATER=extruder TARGET=230
+
 
 # To be continued...
