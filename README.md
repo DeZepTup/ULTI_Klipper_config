@@ -12,24 +12,35 @@
 - Настроить RPi через raspi-config (Hostname, Password, Timezone, etc)
 
 ## Установка/обновление Klipper
->git clone https://github.com/KevinOConnor/klipper
+>cd ~/klipper
 
->cd ~/klipper/
+>git pull
+
+>~/klipper/scripts/install-octopi.sh (даже с Fluidd)
+
+>ls -lrt /dev/serial/by-id/
+lrwxrwxrwx 1 root root 13 Jan 17 22:12 usb-marlinfw.org_Marlin_USB_Device_0F017012AF4818C85D18BAFAF50020C3-if00 -> ../../ttyACM0
 
 >make menuconfig
 
-- Выбрать LPC1768
+[x] Enable extra low-level configuration options
+    Micro-controller Architecture (LPC176x (Smoothieboard))  --->
+    Processor model (lpc1768 (100 MHz))  --->
+[x] Target board uses Smoothieware bootloader
+[x] Use USB for communication (instead of serial)
+    USB ids  --->
+[ ] Specify a custom step pulse duration
+()  GPIO pins to set at micro-controller startup
+
+>make clean
 
 >make
 
->ls /dev/serial/by-id/*
-
-- Должно быть /dev/serial/by-id/usb-Klipper_lpc1768_08200012801C3DAF134B975CC02000F5-if00
-
-## Прошивка
 >sudo service klipper stop
 
->make flash FLASH_DEVICE=/dev/serial/by-id/usb-Klipper_lpc1768_08200012801C3DAF134B975CC02000F5-if00
+###### http://smoothieware.org/flashing-the-bootloader
+>make flash FLASH_DEVICE=/dev/ttyACM0
+
+- Либо через SD. [Удлинитель](https://habr.com/ru/post/206394/) поможет с перепрошивками! 
 
 >sudo service klipper start
-- Либо через SD
