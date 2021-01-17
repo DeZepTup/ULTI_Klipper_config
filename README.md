@@ -55,6 +55,7 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-Klipper_lpc1768_1270010FC81848AFFABA1
 
 ## Калибровка
 - PID_CALIBRATE HEATER=extruder TARGET=230
-
+- https://www.klipper3d.org/Endstop_Phase.html
+- 
 
 # To be continued...
