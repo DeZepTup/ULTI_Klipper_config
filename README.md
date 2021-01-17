@@ -12,13 +12,19 @@
 - Настроить RPi через raspi-config (Hostname, Password, Timezone, etc)
 
 ## Установка/обновление Klipper
-git clone https://github.com/KevinOConnor/klipper
-cd ~/klipper/
-make menuconfig
-Выбрать LPC1768
-make
-ls /dev/serial/by-id/*
-Должно быть /dev/serial/by-id/usb-Klipper_lpc1768_08200012801C3DAF134B975CC02000F5-if00
+>git clone https://github.com/KevinOConnor/klipper
+
+>cd ~/klipper/
+
+>make menuconfig
+
+- Выбрать LPC1768
+
+>make
+
+>ls /dev/serial/by-id/*
+
+- Должно быть /dev/serial/by-id/usb-Klipper_lpc1768_08200012801C3DAF134B975CC02000F5-if00
 
 ## Прошивка
 >sudo service klipper stop
