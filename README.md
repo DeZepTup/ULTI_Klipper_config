@@ -75,3 +75,4 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-Klipper_lpc1768_1270010FC81848AFFABA1
 - https://www.klipper3d.org/Slicers.html
 - https://www.klipper3d.org/Resonance_Compensation.html
 - https://www.klipper3d.org/Pressure_Advance.html
+- Проверить на тесте https://www.klipper3d.org/skew_correction.html
