@@ -56,6 +56,22 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-Klipper_lpc1768_1270010FC81848AFFABA1
 ## Калибровка
 - PID_CALIBRATE HEATER=extruder TARGET=230
 - https://www.klipper3d.org/Endstop_Phase.html
-- 
+- https://www.klipper3d.org/Manual_Level.html
+>ENDSTOP_PHASE_CALIBRATE 
+
+>BED_SCREWS_ADJUST
+
+>ENDSTOP_PHASE_CALIBRATE 
+
+>Z_ENDSTOP_CALIBRATE
+
+>BED_SCREWS_ADJUST
+
+>ENDSTOP_PHASE_CALIBRATE
 
 # To be continued...
+
+- https://www.klipper3d.org/Rotation_Distance.html
+- https://www.klipper3d.org/Slicers.html
+- https://www.klipper3d.org/Resonance_Compensation.html
+- https://www.klipper3d.org/Pressure_Advance.html
