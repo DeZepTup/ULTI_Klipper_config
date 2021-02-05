@@ -11,6 +11,9 @@
 >sudo raspi-config [>Update]
 - Настроить RPi через raspi-config (Hostname, Password, Timezone, etc)
 
+>sudo echo "pi ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+
 ## Установка/обновление Klipper
 >cd ~/klipper
 
