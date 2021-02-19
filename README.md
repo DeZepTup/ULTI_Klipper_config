@@ -1,3 +1,10 @@
+## Репозиторий
+Данная конфигурация может не подойти к любому ULTI, однако имеет структурированый вид, а потому удобна в качестве темплейта.
+Eсть предложения? Пишите!
+- ./macros - склад макросов, подгружается вся директория
+- printer-basic.cfg - базовый медленный вариант конфига. На текущий момент актуален он.
+- printer.cfg - временно не актуальный конфиг. Будет обновлен после калибровки с акселлерометром.
+
 ## Установка FLUIDD
 - Скачать образ (https://github.com/cadriel/FluiddPI) и залить его на SD при помощи balenaEtcher (https://www.balena.io/etcher/)
 - Настроить WiFi в fluiddpi-wpa-supplicant.txt
@@ -72,16 +79,21 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-Klipper_lpc1768_1270010FC81848AFFABA1
 >Z_ENDSTOP_CALIBRATE
 
 
-# TODO
-- Doublecheck LOAD_FILAMENT and e-steps
-- Doublecheck START_PRINT temp
-- Firmware retraction
-- https://www.klipper3d.org/Slicers.html
-- https://www.klipper3d.org/Resonance_Compensation.html
+# Testing
 - https://www.klipper3d.org/Pressure_Advance.html
+- PA with reduced retraction (1.75mm and 25mm/s) - Temp Tower - PA with lower FACTOR (maybe standart settings - 100 or 80 mm\s, layer 0.1 or 0.2)
+
+# TODO
+- https://www.klipper3d.org/Resonance_Compensation.html
 - Проверить на тесте https://www.klipper3d.org/skew_correction.html
-- Settings per nozzle (PA) + nozzle_diameter
-- Settings per material (retract, z_offset) + filament_diameter
+- Settings per material (retract, z_offset)
+
+# Useful notes
+- Firmware retraction - no wipe, not sure
+- https://www.klipper3d.org/Slicers.html
+- Temp tower
+>TUNING_TOWER COMMAND="SET_HEATER_TEMPERATURE HEATER=extruder" PARAMETER=TARGET START=250 FACTOR=-5 BAND=10
+
 
 # Изменения по версиям Klipper
 - https://www.klipper3d.org/Rotation_Distance.html
