@@ -81,7 +81,11 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-Klipper_lpc1768_1270010FC81848AFFABA1
 
 # Testing
 - https://www.klipper3d.org/Pressure_Advance.html
-- PA with reduced retraction (1.75mm and 25mm/s) - Temp Tower - PA with lower FACTOR (maybe standart settings - 100 or 80 mm\s, layer 0.1 or 0.2)
+- PA with reduced retraction (1.75mm and 25mm/s) - Temp Tower - PA with lower FACTOR and short range (168 per tower, so 0.45-0.618)
+>TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0.45 FACTOR=.001
+- Final retraction calibration
+- PA check with regular printing settings (maybe standart settings - 100 or 80 mm\s, layer 0.1 or 0.2)
+- Benchy and Cube =)
 
 # TODO
 - https://www.klipper3d.org/Resonance_Compensation.html
