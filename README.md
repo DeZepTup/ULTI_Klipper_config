@@ -72,17 +72,20 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-**Klipper**_lpc1768_1270010FC81848AFF
 
 
 
-## 5. Guide in progress - Pressure Advance
-- https://www.klipper3d.org/Pressure_Advance.html
+## 5. Guide in progress - [Pressure Advance](https://www.klipper3d.org/Pressure_Advance.html)
+- **Make sure flow is calibrated**
 - PA with reduced retraction (1.75mm and 25mm/s)
-- Temp Tower 
+- Temp Tower (again, may see changes)
+- PA with lower FACTOR and short range (168 per tower, so 0.3-0.636)  
+pressure_advance = <start> + <measured_height> * <factor> = 0.3 + <measured_height> + 0.002
 >TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0.3 FACTOR=.002
-- PA with lower FACTOR and short range (168 per tower, so 0.3-0.636)
+- firmware_retraction
 - Fine retraction calibration (tower)
 - PA check with regular printing settings (maybe standart settings - 100 or 80 mm\s, layer 0.1 or 0.2)
 - Benchy and Cube =)
 
 # TODO
+- Not sure about correct retraction/deretraction acceleration - max_extrude_only_accel  
 - Fan tower
 - https://www.klipper3d.org/Resonance_Compensation.html
 - Проверить на тесте https://www.klipper3d.org/skew_correction.html
@@ -94,7 +97,6 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-**Klipper**_lpc1768_1270010FC81848AFF
 - Fine-tuning Input Shaping (maybe with PA)
 
 # Useful notes
-- Firmware retraction - no wipe, not sure
 - https://www.klipper3d.org/Slicers.html
 - Temp tower (to verify, bug)
 >TUNING_TOWER COMMAND="SET_HEATER_TEMPERATURE HEATER=extruder" PARAMETER=TARGET START=250 FACTOR=-5 BAND=10
