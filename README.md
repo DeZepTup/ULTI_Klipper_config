@@ -22,43 +22,34 @@ Eсть предложения? Пишите!
 
 
 ## 2. Установка/обновление Klipper
->cd ~/klipper
+>cd ~/klipper  
+>git pull  
+>~/klipper/scripts/install-octopi.sh `(даже с Fluidd)`   
+>ls -lrt /dev/serial/by-id/  
+lrwxrwxrwx 1 root root 13 Jan 17 22:12 usb-marlinfw.org_Marlin_USB_Device_0F017012AF4818C85D18BAFAF50020C3-if00 -> ../../ttyACM0  
+>make menuconfig  
 
->git pull
+[x] Enable extra low-level configuration options  
+    Micro-controller Architecture (LPC176x (Smoothieboard))  --->  
+    Processor model (lpc1768 (100 MHz))  --->  
+[x] Target board uses Smoothieware bootloader  
+[x] Use USB for communication (instead of serial)  
+    USB ids  --->  
+[ ] Specify a custom step pulse duration  
+()  GPIO pins to set at micro-controller startup  
 
->~/klipper/scripts/install-octopi.sh (даже с Fluidd)
+>make clean  
+>make  
+>sudo service klipper stop  
 
->ls -lrt /dev/serial/by-id/
-lrwxrwxrwx 1 root root 13 Jan 17 22:12 usb-marlinfw.org_Marlin_USB_Device_0F017012AF4818C85D18BAFAF50020C3-if00 -> ../../ttyACM0
+- Прошивка SKR напрямую потребует [другой бутлоадер для LPC1768](http://smoothieware.org/flashing-the-bootloader)  
+>make flash FLASH_DEVICE=/dev/ttyACM0    
+- Проще прошиться через SD. [Удлинитель](https://habr.com/ru/post/206394/) поможет!  
+Закидываем на SD файл **klipper.bin**, переименовав его в **firmware.bin**. Включаем SKR, проверяем.  
+>ls -lrt /dev/serial/by-id/  
 
->make menuconfig
-
-[x] Enable extra low-level configuration options
-    Micro-controller Architecture (LPC176x (Smoothieboard))  --->
-    Processor model (lpc1768 (100 MHz))  --->
-[x] Target board uses Smoothieware bootloader
-[x] Use USB for communication (instead of serial)
-    USB ids  --->
-[ ] Specify a custom step pulse duration
-()  GPIO pins to set at micro-controller startup
-
->make clean
-
->make
-
->sudo service klipper stop
-
-- Прошивка SKR напрямую потребует [другой бутлоадер для LPC1768](http://smoothieware.org/flashing-the-bootloader)
->make flash FLASH_DEVICE=/dev/ttyACM0
-
-- Проще прошиться через SD. [Удлинитель](https://habr.com/ru/post/206394/) поможет!
-
-Закидываем на SD файл **klipper.bin**, переименовав его в **firmware.bin**. Включаем SKR, проверяем.
-
->ls -lrt /dev/serial/by-id/
-lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-**Klipper**_lpc1768_1270010FC81848AFFABA185DC32000F5-if00 -> ../../ttyACM0
-
->sudo service klipper start
+lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-**Klipper**_lpc1768_1270010FC81848AFFABA185DC32000F5-if00 -> ../../ttyACM0  
+>sudo service klipper start  
 
 ## 3. Конфигурирование
 - Открываем printer.cfg, корректируем в нем раздел MCU - ставим свой/dev/serial/by-id/...
@@ -68,9 +59,9 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-**Klipper**_lpc1768_1270010FC81848AFF
 ## 4. Базовая калибровка
 - Калибруем PID экструдера. 
 >PID_CALIBRATE HEATER=extruder TARGET=230
-- Калибруем [концевики] (https://www.klipper3d.org/Endstop_Phase.html)
+- Калибруем [концевики](https://www.klipper3d.org/Endstop_Phase.html)
 >ENDSTOP_PHASE_CALIBRATE 
-- https://www.klipper3d.org/Manual_Level.html
+- Выравниваем [стол](https://www.klipper3d.org/Manual_Level.html)
 >BED_SCREWS_ADJUST
 - Еще раз проверяем концевики
 >ENDSTOP_PHASE_CALIBRATE 
