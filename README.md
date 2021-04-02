@@ -141,5 +141,5 @@ lrwxrwxrwx 1 root root 13 Jan 17 23:20 usb-**Klipper**_lpc1768_1270010FC81848AFF
 
 
 
-### [**На ZAV/UNI/BOLT**](https://yoomoney.ru/to/4100116514086369)
+### [**На ZAV/UNI/BOLT**](https://yoomoney.ru/to/4100116514086369?from=auth&contextId=UACB_CAC_803ecb35-61a0-4692-bb9c-d2a35735c8fe)
 
